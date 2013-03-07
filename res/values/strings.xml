@@ -1,5 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BluetoothAudioSetup</string>
+    <string name="app_name">Bluetooth Audio Manager</string>
+    <string name="manage_bluetooth">Manage Bluetooth</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Bluetooth Audio Manager</string>
 
 </resources>
