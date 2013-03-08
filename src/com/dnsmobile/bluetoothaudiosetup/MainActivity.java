@@ -8,8 +8,8 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
 
-public class MainActivity extends Activity {
-
+public class MainActivity extends Activity 
+{
 	public static final String SHARED_PREFS_NAME = "com.dnsmobile.bluetoothaudiosetup.SHARED_PREFS";
 	public static final String SHARED_PREFS_KEY_ENABLED = "com.dnsmobile.bluetoothaudiosetup.KEY_ENABLED";
 	
