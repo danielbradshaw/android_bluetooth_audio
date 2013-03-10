@@ -11,8 +11,6 @@ import android.util.Log;
 public class BluetoothBroadcastReceiver extends BroadcastReceiver 
 {
 	private static final String TAG = "BluetoothBroadcastReceiver";
-	public static final String SHARED_PREFS_ORIGINAL_VOL = "com.dnsmobile.bluetoothaudiosetup.ORIGINAL_VOL";
-	private static final int AUDIO_STREAM_BLUETOOTH = 6;
 	
 	@Override
 	public void onReceive(Context context, Intent intent) 
@@ -43,25 +41,11 @@ public class BluetoothBroadcastReceiver extends BroadcastReceiver
 	}
 	
 	private void bluetoothConnected(Context context, SharedPreferences sharedPrefs) {
-		
 		// create the service to keep the process alive
 		context.startService(new Intent(context, WakeLockService.class));
-		
-		// set bluetooth audio to full volume, saving the original
-		AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-		int originalVolume = audioManager.getStreamVolume(AUDIO_STREAM_BLUETOOTH);
-		sharedPrefs.edit().putInt(SHARED_PREFS_ORIGINAL_VOL, originalVolume).commit();
-		int maxVolume = audioManager.getStreamMaxVolume(AUDIO_STREAM_BLUETOOTH);
-		audioManager.setStreamVolume(AUDIO_STREAM_BLUETOOTH, maxVolume, AudioManager.FLAG_SHOW_UI);
 	}
 	
 	private void bluetoothDisconnected(Context context, SharedPreferences sharedPrefs) {
-		
-		// reset audio level to the original volume
-		AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-		int originalVolume = sharedPrefs.getInt(SHARED_PREFS_ORIGINAL_VOL, 0);
-		audioManager.setStreamVolume(AUDIO_STREAM_BLUETOOTH, originalVolume, AudioManager.FLAG_SHOW_UI);
-		
 		// stop the service which will remove the notification and release the wake lock
 		context.stopService(new Intent(context, WakeLockService.class));
 	}

@@ -6,4 +6,7 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">Bluetooth Audio Manager</string>
 
+    <string name="notif_title">Bluetooth Audio Settings</string>
+    <string name="notif_text">Holding wake lock and adjusted audio</string>
+    
 </resources>
